@@ -7,7 +7,7 @@ A screen color typically has **Red**, **Green**, and **Blue** brightness values,
 
 However, some devices need to save memory/bandwidth and use a smaller **16-bit format** called **RGB565**. This sacrifices some color precision but reduces storage by 33%.
 
-![RGB Introduction](rgb_introduction.png)
+![RGB Introduction](figures/rgb_introduction.png)
 *Figure 1: Understanding RGB color representation - how computers create colors using Red, Green, and Blue components*
 
 ## Why RGB565 is Necessary: Memory Savings
@@ -31,7 +31,7 @@ This becomes critical when you consider:
 
 For a 60 FPS video game, this saves **168 MB per second** of framebuffer data!
 
-![Memory Comparison](memory_comparison.png)
+![Memory Comparison](figures/memory_comparison.png)
 *Figure 2: Memory usage comparison showing why RGB565 compression is essential for mobile and embedded devices*
 
 ## RGB565 Format Scheme
@@ -50,7 +50,7 @@ RGB565 packs RGB values into 16 bits with the following bit allocation:
 - **Green gets 6 bits** because human eyes are most sensitive to green light
 - **Red and Blue get 5 bits each** for the remaining 10 bits
 
-![RGB565 Format](rgb565_format.png)
+![RGB565 Format](figures/rgb565_format.png)
 *Figure 3: RGB565 bit allocation showing how 16 bits are distributed among Red (5), Green (6), and Blue (5) channels*
 
 ## Step-by-Step Implementation: 24-bit RGB → RGB565
@@ -83,7 +83,7 @@ Convert RGB(255, 128, 64):
 3. `b5 = 64 >> 3 = 8` (0x08)
 4. `rgb565 = (31 << 11) | (32 << 5) | 8 = 0xFC48`
 
-![Conversion Steps](conversion_steps.png)
+![Conversion Steps](figures/conversion_steps.png)
 *Figure 4: Step-by-step visual breakdown of converting RGB(255, 128, 64) to RGB565 format*
 
 ## Homework Assignment
@@ -129,12 +129,12 @@ Implement these three functions to extract RGB values from RGB565:
 
 Run your program to verify the conversions work correctly. The color values should be approximately correct after the round-trip conversion (some precision loss is expected).
 
-![Quality Comparison](quality_comparison.png)
+![Quality Comparison](figures/quality_comparison.png)
 *Figure 5: Quality comparison showing original 24-bit colors vs RGB565 compressed versions*
 
 ## Visual Summary
 
-![RGB565 Summary](rgb565_summary.png)
+![RGB565 Summary](figures/rgb565_summary.png)
 *Figure 6: Complete RGB565 summary showing key concepts, memory savings, and applications*
 
 ## Educational Resources
