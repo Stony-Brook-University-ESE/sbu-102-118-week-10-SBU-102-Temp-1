@@ -6,6 +6,9 @@ A screen color typically has **Red**, **Green**, and **Blue** brightness values,
 
 However, some devices need to save memory/bandwidth and use a smaller **16-bit format** called **RGB565**. This sacrifices some color precision but reduces storage by 33%.
 
+![RGB Introduction](rgb_introduction.png)
+*Figure 1: Understanding RGB color representation - how computers create colors using Red, Green, and Blue components*
+
 ## Why RGB565 is Necessary: Memory Savings
 
 Consider a modern display with **1920×1440 resolution** (2,764,800 pixels):
@@ -27,6 +30,9 @@ This becomes critical when you consider:
 
 For a 60 FPS video game, this saves **168 MB per second** of framebuffer data!
 
+![Memory Comparison](memory_comparison.png)
+*Figure 2: Memory usage comparison showing why RGB565 compression is essential for mobile and embedded devices*
+
 ## RGB565 Format Scheme
 
 RGB565 packs RGB values into 16 bits with the following bit allocation:
@@ -42,6 +48,9 @@ RGB565 packs RGB values into 16 bits with the following bit allocation:
 **Why this allocation?**
 - **Green gets 6 bits** because human eyes are most sensitive to green light
 - **Red and Blue get 5 bits each** for the remaining 10 bits
+
+![RGB565 Format](rgb565_format.png)
+*Figure 3: RGB565 bit allocation showing how 16 bits are distributed among Red (5), Green (6), and Blue (5) channels*
 
 ## Step-by-Step Implementation: 24-bit RGB → RGB565
 
@@ -72,6 +81,9 @@ Convert RGB(255, 128, 64):
 2. `g6 = 128 >> 2 = 32` (0x20) 
 3. `b5 = 64 >> 3 = 8` (0x08)
 4. `rgb565 = (31 << 11) | (32 << 5) | 8 = 0xFC48`
+
+![Conversion Steps](conversion_steps.png)
+*Figure 4: Step-by-step visual breakdown of converting RGB(255, 128, 64) to RGB565 format*
 
 ## Homework Assignment
 
@@ -115,3 +127,30 @@ Implement these three functions to extract RGB values from RGB565:
 ## Testing Your Code
 
 Run your program to verify the conversions work correctly. The color values should be approximately correct after the round-trip conversion (some precision loss is expected).
+
+![Quality Comparison](quality_comparison.png)
+*Figure 5: Quality comparison showing original 24-bit colors vs RGB565 compressed versions*
+
+## Visual Summary
+
+![RGB565 Summary](rgb565_summary.png)
+*Figure 6: Complete RGB565 summary showing key concepts, memory savings, and applications*
+
+## Educational Resources
+
+This assignment includes comprehensive educational materials:
+
+### Video Tutorial
+- **rgb565_explanation.mp4** - Complete 44-second educational video perfect for classroom use
+
+### Interactive Tools  
+- **interactive_rgb565_demo.py** - Hands-on demo tool to experiment with RGB conversion
+- **animated_rgb565_demo.py** - Step-by-step animated explanation
+
+Run the interactive demo to experiment with different RGB values:
+```bash
+python3 interactive_rgb565_demo.py
+```
+
+### Complete Educational Package
+See **RGB565_EDUCATIONAL_GUIDE.md** for the complete learning package including all visualization tools and detailed explanations.
